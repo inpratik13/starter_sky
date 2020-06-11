@@ -1,0 +1,5 @@
+include 'core'
+include 'api'
+
+rootProject.name = 'sky'
+rootProject.children.each { it.name = "sky-${it.name}" }

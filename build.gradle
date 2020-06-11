@@ -1,0 +1,27 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+version = '1.0'
+
+ext {
+    springVersion = "5.2.2.RELEASE"
+    
+    hikariVersion = "3.4.5"
+    javaxPersistenceVersion = "2.2"
+    hibernateVersion = "5.4.17.Final"
+    springJpaVersion = "2.3.0.RELEASE"
+    mysqlVersion = "8.0.20"
+    
+    guavaVersion = "29.0-jre"
+    commonsLang3Version = "3.10"
+    jettyVersion = "9.4.29.v20200521"
+    jupiterVersion = "5.6.2"
+    jerseyVersion = "2.29.1"
+}
+
+//test {
+//    useJUnitPlatform()
+//}
