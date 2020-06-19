@@ -9,13 +9,14 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Component;
 
+import com.vyantech.sky.api.rest.RestSpringConfig;
 import com.vyantech.sky.core.CoreSpringConfig;
 import com.vyantech.sky.core.db.DBConfig;
 
 @Component
 @Configuration
 @ComponentScan(basePackages = { "com.vyantech.sky.api.service" })
-@Import(CoreSpringConfig.class)
+@Import({ CoreSpringConfig.class, RestSpringConfig.class })
 public class ApiSpringConfig {
 
 	@Bean
@@ -24,7 +25,7 @@ public class ApiSpringConfig {
 		prop.load(
 				ApiSpringConfig.class
 						.getResourceAsStream("/persistence.properties"));
-		
+
 		return DBConfig.from(prop);
 	}
 }

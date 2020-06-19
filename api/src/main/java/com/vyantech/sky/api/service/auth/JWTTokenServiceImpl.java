@@ -7,6 +7,7 @@ import static com.vyantech.sky.utils.CryptoUtils.decodeBase64;
 import static com.vyantech.sky.utils.CryptoUtils.encodeBase64;
 import static com.vyantech.sky.utils.JSONUtils.fromJson;
 import static com.vyantech.sky.utils.JSONUtils.toJson;
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -29,7 +30,12 @@ public class JWTTokenServiceImpl implements TokenService {
 
 	@Autowired
 	public JWTTokenServiceImpl(
-			@Value("${outing.auth.token_generator_secret_key}") String secretKey) {
+			@Value("${rest.token.secretKey:}") String secretKey) {
+
+		if (isEmpty(secretKey)) {
+			throw new IllegalArgumentException("secretKey can't be empty");
+		}
+
 		hmacHelper = new HmacHelper(secretKey);
 	}
 
